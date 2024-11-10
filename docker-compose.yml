@@ -1,0 +1,19 @@
+version: '2.2'
+
+services:
+  stardew-valley:
+    image: metrogamelab/stardew-valley-server:latest
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    container_name: stardew-valley
+    ports:
+      - 5900:5900
+      - 24642:24642/udp
+    volumes:
+      - ./config:/home/container/.config/i3/config
+      - ./valley_saves:/home/container/.config/StardewValley/Saves/
+      - ./configs/alwayson.json:/home/container/Stardew Valley/Mods/Always On Server/config.json
+      - ./configs/unlimitedplayers.json:/home/container/Stardew Valley/Mods/UnlimitedPlayers/config.json
+      - ./configs/autoload.json:/home/container/Stardew Valley/Mods/AutoLoadGame/config.json
+      
